@@ -1,0 +1,35 @@
+{
+  "name": "famous-login-examples",
+  "description": "Example login screens",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jaimetarrant/famous-login-examples.git",
+  "authors": [{
+    "name": "",
+    "url": "http://github.com/jaimetarrant/"
+  }],
+  "main": "app/index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "famo.us"
+  ],
+  "license": "MPL 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "almond": "~0.2.9",
+    "famous-polyfills": "git+https://github.com/Famous/polyfills.git#0.1.1",
+    "famous": "git+https://github.com/Famous/famous.git#flat0.1.1"
+  },
+  "scripts": {
+    "postinstall": "grunt bower"
+  }
+}
