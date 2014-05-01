@@ -4,32 +4,67 @@ define(function(require, exports, module) {
   // import dependencies
   var Engine = require('famous/core/Engine');
   var Surface = require('famous/core/Surface');
+  var InputSurface = require('famous/surfaces/InputSurface');
+  var ImageSurface = require('famous/surfaces/ImageSurface');
   var Modifier = require('famous/core/Modifier');
+  var SequentialLayout = require("famous/views/SequentialLayout");
 
   // create the main context
   var mainContext = Engine.createContext();
-  var content;
-  content = '<div id="logo"><img alt="logo" width="150" src="' + 'content/images/famous_symbol_transparent.png' + '"/></div>';
-  content += '<div id="loginHeader"><p>Login</p><div>';
-  content += '<div id="ruler"><hr><div>';
-  content += '<div id="loginEmail" class="loginInputField"><input id="nav-bar-signup-email" type="email" name="email" placeholder="Email address" class="form-control"> </div>';
-  content += '<div id="loginPassword" class="loginInputPassword"><input id="nav-bar-signup-email" type="password" name="password" placeholder="Password" class="form-control"> </div>';
-  content += '<br />';
-  content += '<div id="loginButton" class="loginButton"><button type="button">Login</button>';
-  content += '<div id="ruler2"><hr/> </div>';
-   // your app here
-  var outline = new Surface({
-    size: [400, 400],
-    content: content,
-    properties: {
-      lineHeight: '2px',
-      textAlign: 'center'
-    }
+
+  var sequentialLayout = new SequentialLayout({
+    direction: 1,
+    
   });
+  var surfaces = [];
+
+  surfaces.push(new ImageSurface({ 
+    // your app here
+
+    //  var surface = new Surface({
+    classes: ['loginLogo'],
+    size: [250,250],
+    content: 'content/images/famous_symbol_transparent.png'}));
+
+  surfaces.push(new InputSurface({
+    size: [250, 25],
+    name: 'emailAddress',
+    placeholder: 'Email address',
+    value: '',
+    type: 'text'
+  }));
+
+  surfaces.push(new InputSurface({
+    size: [250, 25],
+    name: 'password',
+    placeholder: 'Password',
+    value: '',
+    type: 'password'
+  }));
 
   var outlineModifier = new Modifier({
     origin: [0.5, 0.5]
   });
 
-  mainContext.add(outlineModifier).add(outline);
+  var inputModifier = new Modifier({
+    origin: [0.5, 0.5]
+  });
+
+  sequentialLayout.sequenceFrom(surfaces);
+/*
+
+  for (var i = 0; i < 10; i++) {
+    surfaces.push(new Surface({
+      content: "Surface: " + (i + 1),
+      size: [undefined, window.innerHeight/10],
+      properties: {
+        backgroundColor: "hsl(" + (i * 360 / 10) + ", 100%, 50%)",
+        lineHeight: window.innerHeight/10 + "px",
+        textAlign: "center"
+      }
+    }));
+  }
+*/
+  mainContext.add(outlineModifier).add(sequentialLayout);
+  //  mainContext.add(inputModifier).add(surfaces);
 });

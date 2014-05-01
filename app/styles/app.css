@@ -1,3 +1,15 @@
 html {
   background: #fff;
-} 
+}
+
+.logoImage {
+  vertical-align: middle;
+}
+
+.loginLogo {
+  display: block;
+  width: 200px;
+  margin-left:auto;
+  margin-right:auto
+  background: #234;
+}
