@@ -14,7 +14,6 @@ define(function(require, exports, module) {
 
   var sequentialLayout = new SequentialLayout({
     direction: 1,
-    
   });
   var surfaces = [];
 
@@ -22,20 +21,24 @@ define(function(require, exports, module) {
     // your app here
 
     //  var surface = new Surface({
-    classes: ['loginLogo'],
+    classes: [],
     size: [250,250],
     content: 'content/images/famous_symbol_transparent.png'}));
 
   surfaces.push(new InputSurface({
-    size: [250, 25],
-    name: 'emailAddress',
+    size: [250, 50],
+    classes: ['loginInput'],
+    name: 'email',
+    id: 'email',
     placeholder: 'Email address',
     value: '',
     type: 'text'
   }));
 
   surfaces.push(new InputSurface({
-    size: [250, 25],
+    size: [250, 50],
+    classes: ['loginInput'],
+    id: 'password',
     name: 'password',
     placeholder: 'Password',
     value: '',
@@ -43,7 +46,7 @@ define(function(require, exports, module) {
   }));
 
   var outlineModifier = new Modifier({
-    origin: [0.5, 0.5]
+    origin: [0.5, 0.2]
   });
 
   var inputModifier = new Modifier({
