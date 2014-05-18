@@ -22,17 +22,18 @@ define(function(require, exports, module) {
     origin: [0.5, 0]
   });
 
-  createLogo();
+  createCat();
   createLoginEmail();
   createLoginPassword();
   createLoginButton();
   createStats();
+  createLogo();
 
-  function createLogo() {
-    var logoSurface = new ImageSurface({
+  function createCat() {
+    var catSurface = new ImageSurface({
       classes: [],
-      size: [250,250],
-      content: 'content/images/famous_symbol_transparent.png'
+      size: [260,260],
+      content: 'content/images/nyan-cat-animation-art.gif'
     });
 
     /*
@@ -40,11 +41,11 @@ define(function(require, exports, module) {
 transform: Transform.translate(150, 100, 0)
 });
 */
-    var logoPositionModifier = new Modifier({
-      origin: [window.innerHeight / (window.innerHeight * 2), window.innerHeight / (window.innerHeight * 2) - 0.2] 
+    var catPositionModifier = new Modifier({
+      origin: [0.5, 0.3] 
     });
 
-    mainContext.add(logoPositionModifier).add(logoSurface);
+    mainContext.add(catPositionModifier).add(catSurface);
   }
 
   function createLoginEmail() {
@@ -59,7 +60,7 @@ transform: Transform.translate(150, 100, 0)
       type: 'text'
     });
     var loginEmailSurfaceModifier = new Modifier({
-      origin: [window.innerHeight / (window.innerHeight * 2), window.innerHeight / (window.innerHeight * 2) + 0.4] 
+      origin: [0.5, 0.9] 
     });
 
     mainContext.add(loginEmailSurfaceModifier).add(loginEmailSurface);
@@ -77,7 +78,7 @@ transform: Transform.translate(150, 100, 0)
     });
 
     var loginPasswordSurfaceModifier = new Modifier({
-      origin: [window.innerHeight / (window.innerHeight * 2), window.innerHeight / (window.innerHeight * 2) + 0.6] 
+      origin: [0.5, 1.1] 
     });
 
     mainContext.add(loginPasswordSurfaceModifier).add(loginPasswordSurface);
@@ -111,8 +112,8 @@ transform: Transform.translate(150, 100, 0)
 
   function createStats() {
     var stats = new Surface({
-      size: [200, 500],
-      content: '<br /><br /> innerHeight: ' + window.innerHeight + '<br /> innerWidth: ' + window.innerWidth,
+      size: [200, 400],
+    content: '<br /><br /> <b>Debug:</b><br /><br /> innerHeight: ' + window.innerHeight + '<br /> innerWidth: ' + window.innerWidth,
       properties: {
         color: 'white',
         textAlign: 'center',
@@ -121,13 +122,33 @@ transform: Transform.translate(150, 100, 0)
     });
 
   var statsModifier = new Modifier({
-    origin: [0.2, 0.2]
+    origin: [0.2, 0.9]
   });
+
+  statsModifier.setTransform(
+    Transform.translate(0,20,0)
+  );
 
   mainContext.add(statsModifier).add(stats);
   }
 
+  function createLogo() {
+    var famousLogo = new ImageSurface({
+      size: [45, 45],
+      content: 'content/images/famous_symbol_transparent.png'
+    });
 
+    var logoModifier = new Modifier({
+      origin: [0.95, 0.9]
+    });
+
+    logoModifier.setTransform(
+      Transform.translate(0,window.innerHeight - 400,0)
+    );
+  
+    
+    mainContext.add(logoModifier).add(famousLogo);
+  }
 
 
   //sequentialLayout.sequenceFrom(surfaces);
