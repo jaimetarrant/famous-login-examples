@@ -1,6 +1,5 @@
 #famous-login-examples                                                                                                             
-> A collection of User Interfaces suitable for user logins mocked up using the
-> famo.us library. 
+> Just a login page that I am playing around with whilst learning famo.us. 
 
 <b>NOTE:</b> These screens are not backed onto any authentication mechanism at
 present.
