@@ -26,6 +26,7 @@ define(function(require, exports, module) {
   createLoginEmail();
   createLoginPassword();
   createLoginButton();
+  createStats();
 
   function createLogo() {
     var logoSurface = new ImageSurface({
@@ -107,6 +108,27 @@ transform: Transform.translate(150, 100, 0)
     mainContext.add(loginButtonModifier).add(loginButtonSurface);
 
   }
+
+  function createStats() {
+    var stats = new Surface({
+      size: [200, 500],
+      content: '<br /><br /> innerHeight: ' + window.innerHeight + '<br /> innerWidth: ' + window.innerWidth,
+      properties: {
+        color: 'white',
+        textAlign: 'center',
+        backgroundColor: 'red'
+      }
+    });
+
+  var statsModifier = new Modifier({
+    origin: [0.2, 0.2]
+  });
+
+  mainContext.add(statsModifier).add(stats);
+  }
+
+
+
 
   //sequentialLayout.sequenceFrom(surfaces);
 /*
