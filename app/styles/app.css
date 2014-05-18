@@ -2,6 +2,21 @@ html {
   color: 000;
 }
 
+html, body {
+	width:100%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	background: #036;
+	overflow: hidden;
+}
+
+body > div {
+	width: 100%;
+	height: 400px;
+	position: relative;
+}
+
 .loginInput {
   border:4px solid rgba(0,0,0,0.4);
   border-radius: 0.75em;
